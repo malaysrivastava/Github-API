@@ -8,9 +8,7 @@ const Home = () => {
 
    const [user,setUser] = useState({Uname:''})
 
-   const [userdata,setUserdata] = useState([
-      
-   ])
+   const [userdata,setUserdata] = useState([])
 
    const {Uname} = user
 
@@ -21,22 +19,23 @@ const Home = () => {
 
  
 
-   useEffect(() => {
-     fetch(`https://api.github.com/users/${user.Uname}`, { 
+          useEffect(() => {
+               fetch(`https://api.github.com/users/${Uname}`, { 
                 headers: {
                      'Accept' : 'application/vnd.github.v3+json'
                  }})
-     .then(response => response.json()) 
-     .then( data => {
-                   setUserdata(data)
-                   console.log(userdata)
+               .then(response => response.json()) 
+               .then( data => {
+                   setUserdata({data})
+                   console.log(userdata.data.message)
 
                })     
                .catch((error) => {
                  toast.error("Oops! Could not reach GitHub");
                  console.log("Oops! We have an error", error);
                });
-          },[user])
+
+           },[user.Uname])
    
   
      return(
@@ -44,13 +43,10 @@ const Home = () => {
         <ToastContainer/>
          <Bar handleChange={handleChange}/>
          <div className="display">
-         {userdata.id && user.Uname !== "" ? (
-            <>
-            { userdata.map((user,i)=>(
-            <UserView key={i} profile={user} />
-            ))
-            }
-            </>
+         {userdata.data.id && user.Uname !== "" ? (
+            
+            <UserView profile={userdata.data} />
+            
             
           ) : (
             <div className="no-data">
