@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header'
-import Storage from './components/Storage'
+import {Storage} from './components/Storage'
 import Home from './core/Home'
 
 const App =()=> {

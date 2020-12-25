@@ -1,23 +1,39 @@
-import React , {useState,useEffect} from 'react'
+import React from 'react'
+import {DELstorage} from '../components/Storage'
 import { ToastContainer, toast } from 'react-toastify';
 import '../styles/view.css'
 
 
 const View =({avatar,local})=> {
+   
+var ls = require('local-storage');
+     
+       
+  const ADDstorage =()=>{
+    if (typeof(Storage) !== "undefined") {
+      // Store
+        ls.set('users',(avatar))
+
+        toast.success("Successfully saved to local storage")
+  } else {
+      toast.error("Sorry, your browser does not support Web Storage...");
+  }
+  }
+
 
     const check =(local)=>{
        if (local) {
         return(
-           <button onClick={localStorage} className="btn btn-warning">Save</button>
+           <button onClick={ADDstorage} className="btn btn-warning">Save</button>
         )       
      } else {
-       return null
+       return(
+        <button onClick={DELstorage} className="btn btn-danger">Remove</button>
+       )
      } 
     }
 
-    const localStorage =()=>{
-
-    }
+    
 
     return(
       <>
