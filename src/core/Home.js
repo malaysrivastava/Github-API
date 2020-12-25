@@ -26,8 +26,9 @@ const Home = () => {
                  }})
                .then(response => response.json()) 
                .then( data => {
-                   setUserdata({data})
-                   console.log(userdata.data.message)
+                   console.log(data)
+                   setUserdata(data)
+                   console.log(userdata)
 
                })     
                .catch((error) => {
@@ -43,9 +44,9 @@ const Home = () => {
         <ToastContainer/>
          <Bar handleChange={handleChange}/>
          <div className="display">
-         {userdata.id && user.Uname !== "" ? (
+         {userdata.id  ? (
             
-            <UserView profile={userdata} />
+            <UserView profile={userdata}/>
             
             
           ) : (

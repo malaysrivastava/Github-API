@@ -5,8 +5,9 @@ import '../styles/view.css'
 
 const View =(avatar)=> {
     return(
-      <>
+      <div className="text-light">
       {/* Avatar */}
+      <h2>{avatar.message}</h2>
       <div>
         <img src={avatar.avatar_url} alt={avatar.name} />
       </div>
@@ -30,7 +31,7 @@ const View =(avatar)=> {
         {/* Info */}
         <div>Bio: {avatar.bio}</div>
       </div>
-    </>
+    </div>
     )
 }
 
