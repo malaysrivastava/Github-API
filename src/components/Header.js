@@ -25,7 +25,7 @@ const Header = ({ history }) => {
           <Link style={isActive(history, '/')} className="nav-link" to="/"><h5>DASHBOARD</h5><span className="sr-only">(current)</span></Link>
         </li>
         <li className="nav-item">
-          <Link style={isActive(history, '/storage')} className="nav-link" to="/storage"><h5>Saved USERS</h5></Link>
+          <Link style={isActive(history, '/storage')} className="nav-link" to="/storage"><h5>USERS</h5></Link>
         </li>
       </ul>
     </div>
