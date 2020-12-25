@@ -1,0 +1,15 @@
+.dp img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.info{
+    margin: auto 0;
+}
+
+.avatar{
+    margin: auto;
+    align-items: center;
+    float: center;
+    
+}
