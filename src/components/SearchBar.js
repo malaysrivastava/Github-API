@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Form,Button} from 'react-bootstrap'
 import '../styles/search.css'
 import axios from 'axios'
+import rateLimit from 'axios-rate-limit';
 
 const Bar =()=> {
     
@@ -21,19 +22,22 @@ const Bar =()=> {
       e.preventDefault()
       LoadData(user)
     }
+  
+    const http = rateLimit(axios.create(), { maxRequests: 100, perMilliseconds: 1000, maxRPS: 100 })
+    http.getMaxRPS() // 2
       
-      const LoadData=(user) => {
-       axios.get(`https://api.github.com/users/${user.Uname}`)
+      const LoadData= (user) => {
+       fetch(`https://api.github.com/users/malaysrivastava`)
             .then(res => {
-                const { data } =res;
+                const { data } = res;
                 console.log({data})
                 setUserdata(data);
                 console.log(userdata)
             })
-            .catch((error) => {
-              toast.error("Oops! Could not reach GitHub");
-              console.log("Oops! We have an error", error);
-            });
+            // .catch((error) => {
+            //   toast.error("Oops! Could not reach GitHub");
+            //   console.log("Oops! We have an error", error);
+            // });
     }
 
 
