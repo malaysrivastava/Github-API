@@ -43,9 +43,9 @@ const Home = () => {
         <ToastContainer/>
          <Bar handleChange={handleChange}/>
          <div className="display">
-         {userdata.data.id && user.Uname !== "" ? (
+         {userdata.id && user.Uname !== "" ? (
             
-            <UserView profile={userdata.data} />
+            <UserView profile={userdata} />
             
             
           ) : (
